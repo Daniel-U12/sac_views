@@ -1,0 +1,16 @@
+ID: SAC_Views
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: sac_db
+   type: hdb
+   path: sac_db
+   requires:
+    - name: hdi_sac_db
+
+resources:
+ - name: hdi_sac_db
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container

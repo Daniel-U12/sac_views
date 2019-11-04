@@ -1,0 +1,27 @@
+{
+	"format_version": 1,
+	"imports":
+	[
+		 {
+	    "column_mappings" : {
+	        "tableCol1" : "CODE", 
+	        "tableCol2" : "CODE_DESC"
+	     },
+        "target_table": "sacviews.artifacts::CAMEO_CODES",
+        "source_data": {
+            "data_type": "CSV",
+            "file_name": "sacviews.data::cameocodes.csv",
+            "has_header": true,
+			"type_config" : { 
+				"delimiter" : ",", 
+				"do_quote" : true
+			}
+        },
+        "import_settings": {
+            "import_columns": [
+				"CODE", "CODE_DESC"
+			]
+        }
+        }
+	]
+}
