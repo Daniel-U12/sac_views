@@ -1,3 +1,4 @@
+CODE,CODE_DESC
 1,MAKE PUBLIC STATEMENT
 10,"Make statement, not specified below"
 11,Decline comment
@@ -71,7 +72,7 @@
 41,Discuss by telephone
 42,Make a visit
 43,Host a visit
-44,Meet at a “hird”location
+44,Meet at a Third location
 45,Mediate
 46,Engage in negotiation
 5,ENGAGE IN DIPLOMATIC COOPERATION
