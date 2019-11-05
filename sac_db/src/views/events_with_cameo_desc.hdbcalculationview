@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="sacviews.views::events_with_cameo_desc" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="events_with_cameo_desc"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sacviews.artifacts::EVENTS">
+    <resourceUri>sacviews.artifacts::EVENTS</resourceUri>
+  </DataSource>
+  <DataSource id="sacviews.artifacts::CAMEO_CODES">
+    <resourceUri>sacviews.artifacts::CAMEO_CODES</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="GlobalEventID" aggregationType="sum"/>
+      <viewAttribute id="Day"/>
+      <viewAttribute id="MonthYear" aggregationType="sum"/>
+      <viewAttribute id="Year" aggregationType="sum"/>
+      <viewAttribute id="Actor1Code"/>
+      <viewAttribute id="Actor1Name"/>
+      <viewAttribute id="Actor1CountryCode"/>
+      <viewAttribute id="Actor2Code"/>
+      <viewAttribute id="Actor2Name"/>
+      <viewAttribute id="Actor2CountryCode"/>
+      <viewAttribute id="GoldsteinScale" aggregationType="sum"/>
+      <viewAttribute id="NumMentions" aggregationType="sum"/>
+      <viewAttribute id="NumSources" aggregationType="sum"/>
+      <viewAttribute id="AvgTone" aggregationType="sum"/>
+      <viewAttribute id="CODE"/>
+      <viewAttribute id="CODE_DESC"/>
+      <viewAttribute hidden="true" id="JOIN$EventCode$CODE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sacviews.artifacts::EVENTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="GlobalEventID" source="GlobalEventID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Day" source="Day"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MonthYear" source="MonthYear"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Actor1Code" source="Actor1Code"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Actor1Name" source="Actor1Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Actor1CountryCode" source="Actor1CountryCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Actor2Code" source="Actor2Code"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Actor2Name" source="Actor2Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Actor2CountryCode" source="Actor2CountryCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GoldsteinScale" source="GoldsteinScale"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NumMentions" source="NumMentions"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NumSources" source="NumSources"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AvgTone" source="AvgTone"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EventCode$CODE" source="EventCode"/>
+    </input>
+    <input node="sacviews.artifacts::CAMEO_CODES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CODE" source="CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CODE_DESC" source="CODE_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EventCode$CODE" source="CODE"/>
+    </input>
+    <joinAttribute name="JOIN$EventCode$CODE"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="Actor1Code" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Actor1Code"/>
+      <keyMapping columnObjectName="Join_1" columnName="Actor1Code"/>
+    </attribute>
+    <attribute id="Actor1Name" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Actor1Name"/>
+      <keyMapping columnObjectName="Join_1" columnName="Actor1Name"/>
+    </attribute>
+    <attribute id="Actor1CountryCode" order="7" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Actor1CountryCode"/>
+      <keyMapping columnObjectName="Join_1" columnName="Actor1CountryCode"/>
+    </attribute>
+    <attribute id="Actor2Code" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Actor2Code"/>
+      <keyMapping columnObjectName="Join_1" columnName="Actor2Code"/>
+    </attribute>
+    <attribute id="Actor2Name" order="9" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Actor2Name"/>
+      <keyMapping columnObjectName="Join_1" columnName="Actor2Name"/>
+    </attribute>
+    <attribute id="Actor2CountryCode" order="10" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Actor2CountryCode"/>
+      <keyMapping columnObjectName="Join_1" columnName="Actor2CountryCode"/>
+    </attribute>
+    <attribute id="CODE_DESC" order="16" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CODE_DESC"/>
+      <keyMapping columnObjectName="Join_1" columnName="CODE_DESC"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="GlobalEventID" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GlobalEventID"/>
+      <measureMapping columnObjectName="Join_1" columnName="GlobalEventID"/>
+    </measure>
+    <measure id="Day" order="2" aggregationType="max" measureType="simple">
+      <descriptions defaultDescription="Day"/>
+      <measureMapping columnObjectName="Join_1" columnName="Day"/>
+    </measure>
+    <measure id="MonthYear" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MonthYear"/>
+      <measureMapping columnObjectName="Join_1" columnName="MonthYear"/>
+    </measure>
+    <measure id="Year" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Year"/>
+      <measureMapping columnObjectName="Join_1" columnName="Year"/>
+    </measure>
+    <measure id="GoldsteinScale" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GoldsteinScale"/>
+      <measureMapping columnObjectName="Join_1" columnName="GoldsteinScale"/>
+    </measure>
+    <measure id="NumMentions" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NumMentions"/>
+      <measureMapping columnObjectName="Join_1" columnName="NumMentions"/>
+    </measure>
+    <measure id="NumSources" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NumSources"/>
+      <measureMapping columnObjectName="Join_1" columnName="NumSources"/>
+    </measure>
+    <measure id="AvgTone" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AvgTone"/>
+      <measureMapping columnObjectName="Join_1" columnName="AvgTone"/>
+    </measure>
+    <measure id="CODE" order="15" aggregationType="count" measureType="simple">
+      <descriptions defaultDescription="CODE"/>
+      <measureMapping columnObjectName="Join_1" columnName="CODE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="252"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="sacviews.artifacts::EVENTS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="222.736328125"/>
+    </shape>
+    <shape modelObjectName="sacviews.artifacts::CAMEO_CODES" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="268.73828125"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
